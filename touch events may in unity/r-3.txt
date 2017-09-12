@@ -1,0 +1,30 @@
+public class leaning : MonoBehaviour {
+ 
+     public float num = 0;
+     public float speed = 1.5f;
+     public float totalRot = 0;
+      
+     void Start (){
+      
+     }
+  
+     void Update()
+     {
+         if(Input.GetKey(KeyCode.Q)){
+             float rotateby = 30 * Time.deltaTime;
+             totalRot += rotateby * Mathf.PI / 180;
+             if(totalRot < 30 * Mathf.PI/180){
+                 transform.RotateAround(transform.forward, rotateBy * Mathf.PI / 180);
+              }
+         } else {
+             float rotateby = -30 * Time.deltaTime;
+             totalRot += rotateby * Mathf.PI / 180;
+             if(totalRot > 0){
+                 transform.RotateAround(transform.forward, rotateBy * Mathf.PI / 180);
+             }        
+         }
+             
+     
+     }
+         
+ }

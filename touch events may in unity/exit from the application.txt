@@ -1,0 +1,12 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class ex : MonoBehaviour {
+	public void doquit() {
+
+			Application.Quit();
+		Debug.Log("has quit the game");
+
+	}
+}

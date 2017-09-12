@@ -1,0 +1,131 @@
+https://www.youtube.com/watch?v=S3pjBQObC90
+
+https://www.youtube.com/watch?v=_x1qht411V0
+
+
+https://code.tutsplus.com/tutorials/introducing-augmented-reality-with-vuforia--cms-27160
+
+https://developer.vuforia.com/forum/unity-extension-technical-discussion/can-i-use-vuforia-without-markers
+
+https://www.vuforia.com/Features
+
+https://docs.unity3d.com/Manual/ReducingFilesize.html
+
+http://answers.unity3d.com/questions/521475/how-to-reduce-apk-size.html
+
+https://aarlangdi.blogspot.in/-very important
+
+
+
+---------------------------------------------------------------------------------
+sourcecode:-
+
+using UnityEngine;
+using System.Collections;
+
+public class rotObj : MonoBehaviour 
+{
+    float rotSpeed = 20;
+
+    void OnMouseDrag()
+    {
+        float rotX = Input.GetAxis("Mouse X")*rotSpeed*Mathf.Deg2Rad;
+       
+
+        transform.RotateAround(Vector3.down, -rotX);
+        
+    }
+}
+-----------------------------------------------------------------
+
+if (Input.touchCount == 2) {
+            float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
+            SelectedObject.transform.RotateAround(Vector3.up, -rotX);
+        }
+------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=v72cvDeMPaI----------- touch to rotate an object
+------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=TYSmf_zgtZo0--------- to reduce the apk file size in unity
+
+
+
+
+
+
+
+------------------------------------------------
+
+
+
+
+using UnityEngine;
+using System.Collections;
+
+public class rotObj : MonoBehaviour 
+{
+    float rotSpeed = 20;
+void Update() 
+{
+if (Input.touchCount == 2) {
+            float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
+            SelectedObject.transform.RotateAround(Vector3.up, -rotX);
+
+float rotY = Input.GetAxis("Mouse Y")*rotSpeed*Mathf.Deg2Rad;
+transform.RotateAround(Vector3.right, rotY);
+}
+}
+}
+---------------------------------------------------------------------------
+augmentd tutorials
+
+https://www.youtube.com/watch?v=gNwduUQrlJs
+
+https://www.youtube.com/watch?v=yhFcV8tVmHc
+https://www.youtube.com/watch?v=T6bd_MQ2ass
+https://www.youtube.com/watch?v=VPbyh_TcDAY
+https://www.youtube.com/watch?v=YCxZfl9Rbgg
+https://www.youtube.com/watch?v=Ip2BeqKJOYY
+-----------------------------------------------------------
+COLOR PICKER 
+
+
+https://www.youtube.com/watch?v=1HXZnzkxCpw-color picker
+
+https://www.youtube.com/watch?v=9iW4ze8n7Yk&t=295
+
+https://www.youtube.com/watch?v=jR8EzaB6iO4&t=60s-
+
+https://www.youtube.com/watch?v=Ibep5tp3GQE
+https://www.youtube.com/watch?v=cxSNRxpLxJ8
+--------------------------------------------------------------------------
+
+https://www.youtube.com/watch?v=duURUxcFy1w
+Unity 3d realtime car
+-------------------------------------------------------
+using UnityEngine;
+using System.Collections;
+
+public class ExampleClass : MonoBehaviour
+{
+    public float speed = 0.1F;
+    void Update()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            // Get movement of the finger since last frame
+            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+
+            // Move object across XY plane
+            transform.Translate(-touchDeltaPosition.x * speed, -touchDeltaPosition.y * speed, 0);
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------------------------
+https://www.binpress.com/tutorial/unity3d-touch-input/133  ------------- for   touch input url
+
+https://kylewbanks.com/blog/unity3d-panning-and-pinch-to-zoom-camera-with-touch-and-mouse-input      -----------------------for zoom
+
+http://answers.unity3d.com/questions/1152016/function-ontouchdown.html
+
+https://unity3d.com/learn/tutorials/topics/mobile-touch/multi-touch-input ------for multi touch input

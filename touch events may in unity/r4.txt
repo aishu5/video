@@ -1,0 +1,29 @@
+public float speed = 1.0f;
+  public float speedRot = 1.0f;
+  private bool isBack = false;
+
+  void Update() {
+   //Move right
+   if(Input.GetKey(KeyCode.D)) {
+    isBack = false;
+    transform.position += new Vector(speed * Time.deltaTime, 0.0f, 0.0f);
+    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, -45.0f), speedRot * Time.deltaTime);
+   }
+   if(Input.GetKey(KeyCode.A)) {
+    isBack = false;
+    transform.position -= new Vector(speed * Time.deltaTime, 0.0f, 0.0f);
+    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, 45.0f), speedRot * Time.deltaTime);
+   }
+   //Than check up key and doing smooth rotate
+   if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)) {
+    isBack = true;
+   }
+   if (isBack) {
+    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, speedRot * Time.deltaTime);
+    //Check, if end rotation
+    if (Quaternion.Angle(transform.rotation, Quaternion.identity) < 2.0f) {
+     transform.rotation = Quaternion.identity;
+     isBack = false;
+    }
+   }
+  }

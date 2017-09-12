@@ -1,0 +1,15 @@
+public Quaternion originalRotationValue; // declare this as a Quaternion
+ float rotationResetSpeed = 1.0f;
+ 
+ void Start () {
+     originalRotationValue = transform.rotation; // save the initial rotation
+ }
+ 
+ void Update () {
+     //rotate selected piece
+     if(isSelected)
+         gameObject.transform.Rotate(0, 1, 0); // this rotates only 1 degree!
+     //otherwise rotate it back to its original rotation
+     else
+         transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.time * rotationResetSpeed); 
+ }

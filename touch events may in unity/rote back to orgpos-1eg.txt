@@ -1,0 +1,51 @@
+ var minimumX : float = -360;
+ var maximumX : float = 360;
+  
+ var minimumY : float = -60;
+ var maximumY : float = 60;
+  
+ var rotationX : float = 0;
+ var rotationY : float = 0;
+  
+ var RSpeed : float = 20;
+ var dampSpeed : float = 0.5;
+  
+ var originalRotation : Quaternion;
+ var qTo : Quaternion;
+  
+ function Update () {
+  
+        rotationX += Input.GetAxis("Horizontal") * Time.deltaTime * RSpeed;
+        rotationY += Input.GetAxis("Vertical") * Time.deltaTime * RSpeed;
+  
+        rotationX = ClampAngle (rotationX, minimumX, maximumX);
+        rotationY = ClampAngle (rotationY, minimumY, maximumY);
+  
+        var xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.left);
+        var yQuaternion = Quaternion.AngleAxis (rotationY, Vector3.up);
+        
+        if (Input.GetKeyUp("w"))
+        {
+         rotationX = 0.0; 
+         rotationY = 0.0;
+        }
+  
+        qTo =  originalRotation * xQuaternion * yQuaternion;
+        
+        transform.rotation = Quaternion.Slerp(transform.rotation, qTo, RSpeed * Time.deltaTime);
+     }
+  
+ function Start () 
+ {
+     originalRotation = transform.rotation;
+     qTo = transform.rotation;
+ }
+  
+ static function ClampAngle (angle : float, min : float, max : float) : float 
+  
+ {
+     if (angle < -360.0)
+        angle += 360.0;
+     if (angle > 360.0)
+        angle -= 360.0;
+     return Mathf.Clamp (angle, min, max);

@@ -1,0 +1,67 @@
+using UnityEngine;
+using System.Collections;
+
+[RequireComponent(typeof(MeshRenderer))]
+
+public class pt : MonoBehaviour 
+{
+
+	#region ROTATE
+	private float _sensitivity = 1f;
+	private Vector3 _mouseReference;
+	private Vector3 _mouseOffset;
+	private Vector3 _rotation = Vector3.zero;
+	private bool _isRotating;
+	private Quaternion original;
+	private Vector3 originalPos;
+
+	#endregion
+	void start(){
+		original=transform.rotation;
+		originalPos = transform.position;
+	}
+
+	void Update()
+	{
+		if(_isRotating)
+		{
+			// offset
+			_mouseOffset = (Input.mousePosition - _mouseReference); // apply rotation
+			_rotation.y = -(_mouseOffset.x + _mouseOffset.y) * _sensitivity; // rotate
+			gameObject.transform.Rotate(_rotation); // store new mouse position
+			_mouseReference = Input.mousePosition;
+		}
+
+	}
+
+	public void OnMouseDown()
+	{
+		// rotating flag
+		_isRotating = true;
+
+		// store mouse position
+		_mouseReference = Input.mousePosition;
+	}
+
+	public void OnMouseUp()
+	{
+		// rotating flag
+		_isRotating = false;
+		transform.rotation = original;
+		transform.position = originalPos;
+	}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
